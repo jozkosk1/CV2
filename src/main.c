@@ -76,16 +76,30 @@ int main(void)
   */
 
   /* TODO - Add your application code here */
-
+  uint32_t p, i = 0;
 
   /* Infinite loop */
   while (1)
   {
 	  if (((GPIOC -> IDR) & (1 << 13)) == 0)
 	  {
+		  for (p=0;p<10000;p++)
+			  ;
+		  if (((GPIOC -> IDR) & (1 << 13)) == 0)
+		  {
+			  while (((GPIOC -> IDR) & (1 << 13)) == 0)
+				  ;
+			  for (p=0;p<10000;p++)
+				  ;
+			  i ^=0x01;
+		  }
+	  }
+
+	  if (i == 1)
+	  {
 		  GPIOA -> ODR |= (1 << 5);
 	  }
-	  else
+	  if (i == 0)
 	  {
 		  GPIOA -> ODR &= ~(1 << 5);
 	  }

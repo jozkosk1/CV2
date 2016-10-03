@@ -49,9 +49,11 @@ SOFTWARE.
 int main(void)
 {
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
-  GPIOA -> MODER |= (1 << 10);
-  GPIOA -> OSPEEDR |= (3 << 10);
-  GPIOA -> PUPDR |= (1 << 10);
+  GPIOA -> MODER |= (1 << 10);		//OUT
+  GPIOA -> OSPEEDR |= (3 << 10);	//Very high speed
+  GPIOA -> PUPDR |= (1 << 10);		//Pull UP
+
+
 
 
 
@@ -85,6 +87,7 @@ int main(void)
 	  GPIOA -> BSRRL  |= (1 << 5);
 	  GPIOA -> BSRRH  |= (1 << 5);
 
+	  GPIOA -> ODR ^= 0x0020;
 	  GPIOA -> ODR ^= 0x0020;
 	  GPIOA -> ODR ^= 0x0020;
 	  GPIOA -> ODR ^= 0x0020;

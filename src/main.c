@@ -76,20 +76,14 @@ int main(void)
 
   /* TODO - Add your application code here */
 
+  uint32_t p =0;
 
   /* Infinite loop */
   while (1)
   {
 
-	  GPIOA -> ODR |= (1 << 5);
-	  GPIOA -> ODR &= ~(1 << 5);
-
-	  GPIOA -> BSRRL  |= (1 << 5);
-	  GPIOA -> BSRRH  |= (1 << 5);
-
-	  GPIOA -> ODR ^= 0x0020;
-	  GPIOA -> ODR ^= 0x0020;
-	  GPIOA -> ODR ^= 0x0020;
+	  for (p=0; p<1000000;p++)
+		  ;
 	  GPIOA -> ODR ^= 0x0020;
 
   }

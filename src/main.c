@@ -102,10 +102,17 @@ int main(void)
   {
 
 	  i=GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
-	  if (i==0)
-		  	  GPIO_WriteBit(GPIOA, GPIO_Pin_5, 1);
-	  else
-		  GPIO_WriteBit(GPIOA, GPIO_Pin_5, 0);
+	  if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)==0)
+	  {
+		  for(j=0; j<100; j++){}
+		  if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)==0)
+		  {
+			  while(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)==0){}
+			  for(j=0; j<100; j++){}
+			  if (GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13)==1)
+				  GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
+		  }
+	  }
   }
   return 0;
 }

@@ -53,7 +53,6 @@ int main(void)
   GPIOA -> OSPEEDR |= (3 << 10);	//Very high speed
   GPIOA -> PUPDR |= (1 << 10);		//Pull UP
 
-  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
 
 
 
@@ -77,19 +76,15 @@ int main(void)
 
   /* TODO - Add your application code here */
 
+  uint32_t p =0;
 
   /* Infinite loop */
   while (1)
   {
-	  if (((GPIOC -> IDR) & (1 << 13)) == 0)
-	  {
-		  GPIOA -> ODR |= (1 << 5);
-	  }
-	  else
-	  {
-		  GPIOA -> ODR &= ~(1 << 5);
-	  }
 
+	  for (p=0; p<1000000;p++)
+		  ;
+	  GPIOA -> ODR ^= 0x0020;
 
   }
   return 0;

@@ -100,11 +100,12 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-	  GPIO_WriteBit(GPIOA, GPIO_Pin_5, 1);
-	  for (j=0; j<100000; j++){}
-	  GPIO_WriteBit(GPIOA, GPIO_Pin_5, 0);
-	  for (j=0; j<100000; j++){}
 
+	  i=GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+	  if (i==0)
+		  	  GPIO_WriteBit(GPIOA, GPIO_Pin_5, 1);
+	  else
+		  GPIO_WriteBit(GPIOA, GPIO_Pin_5, 0);
   }
   return 0;
 }

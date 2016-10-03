@@ -99,7 +99,8 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-
+	  GPIO_WriteBit(GPIOA, GPIO_Pin_5, 1);
+	  GPIO_WriteBit(GPIOA, GPIO_Pin_5, 0);
   }
   return 0;
 }

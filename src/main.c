@@ -94,13 +94,13 @@ int main(void)
   */
 
   /* TODO - Add your application code here */
-
+	uint8_t i;
 
   /* Infinite loop */
   while (1)
   {
-	  GPIO_WriteBit(GPIOA, GPIO_Pin_5, 1);
-	  GPIO_WriteBit(GPIOA, GPIO_Pin_5, 0);
+	  i=GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+
   }
   return 0;
 }
